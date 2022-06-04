@@ -64,6 +64,16 @@ Red is a fully modular bot – meaning all features and commands can be enabled/
 liking, making it completely customizable. This is a *self-hosted bot* – meaning you will need
 to host and maintain your own instance. You can turn Red into an admin bot, music bot, trivia bot,
 new best friend or all of these together!  
+Install yarn if you haven't done so yet, npm i -g yarn or sudo npm i -g yarn if on a unix system.
+Fork/Clone the repo.
+Install deps with by typing yarn.
+Copy .env.example to a new file .env file.
+Type yarn build to build the Prisma schema.
+Make a volume for the postgres database with docker volume create --name=postgres.
+Start the database with docker-compose up --build postgres this will only start the postgres container.
+Update the environment variable DATABASE_URL in /apps/bot with postgresql://postgres:internalpassword@localhost:5432/bot?schema=public
+Before testing make sure to push the schema to the database with yarn pushdb (you will need to re-run this every time you make changes to prisma/schema.prisma)
+Test with yarn dev. Every time you save a file the running instance will automatically stop, build and restart.
 
 [Installation](#installation) is easy, and you do **NOT** need to know anything about coding! Aside
 from installing and updating, every part of the bot can be controlled from within Discord.
